@@ -1,0 +1,21 @@
+app:
+  build: .
+  ports:
+    - "8080:8080"
+  links:
+    - mariadb
+    - redis
+  volumes:
+    - "./go/src/app:/go/src/app"
+  volumes_from:
+    - gopath
+
+mariadb:
+  image: mariadb
+  environment:
+    MYSQL_ROOT_PASSWORD: password
+redis:
+  image: redis
+gopath:
+  image: busybox
+
