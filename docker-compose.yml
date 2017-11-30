@@ -6,9 +6,10 @@ app:
     - mariadb
     - redis
   volumes:
-    - "./go/src/app:/go/src/app"
+    - ".:/go/src/app"
   volumes_from:
     - gopath
+  command: go run main.go
 
 mariadb:
   image: mariadb
